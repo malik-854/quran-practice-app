@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Kitab | Quran Translation Practice</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Outfit:wght@300;400;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div id="login-screen" class="login-overlay">
+        <div class="login-card">
+            <div class="logo">Al-Kitab</div>
+            <p>Please sign in to save your Quran study progress across devices.</p>
+            <div class="login-actions">
+                <button id="auth-btn" class="nav-btn primary">Login with Google</button>
+                <button id="skip-login-btn" class="nav-btn secondary outline">Skip for now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-content" class="app-container hidden">
+        <header>
+            <div class="header-top">
+                <div class="logo">Al-Kitab</div>
+                <div class="header-actions">
+                    <div class="lang-switch">
+                        <button id="lang-en" class="lang-btn active">EN</button>
+                        <button id="lang-ur" class="lang-btn">اردو</button>
+                    </div>
+                    <button id="study-list-btn" class="icon-btn" title="Study List">📚</button>
+                    <button id="logout-btn" class="icon-btn" title="Logout">🚪</button>
+                </div>
+            </div>
+            <div class="surah-picker">
+                <div class="picker-group">
+                    <label for="surah-select">Surah</label>
+                    <select id="surah-select">
+                        <option value="" disabled selected>Select Surah...</option>
+                    </select>
+                </div>
+                <div class="picker-group compact">
+                    <label for="verse-jump">Verse</label>
+                    <div class="verse-input-wrapper">
+                        <input type="number" id="verse-jump" min="1" value="1">
+                        <span id="total-verses">/ ...</span>
+                    </div>
+                </div>
+            </div>
+            <div id="loading" class="loading-spinner hidden"></div>
+        </header>
+
+        <main>
+            <section class="verse-section">
+                <div id="arabic-text" class="arabic-display">
+                    <!-- Arabic content from JS -->
+                </div>
+                
+                <div class="toggle-group">
+                    <button id="toggle-wbw" class="toggle-btn">
+                        <span class="icon">🔍</span>
+                        <span class="btn-text">Word-by-Word</span>
+                    </button>
+                    <button id="toggle-verse-translation" class="toggle-btn">
+                        <span class="icon">📖</span>
+                        <span class="btn-text">Verse Translation</span>
+                    </button>
+                </div>
+
+                <div id="wbw-section" class="wbw-container hidden">
+                    <!-- Word by word content from JS -->
+                </div>
+
+                <div id="verse-translation-section" class="verse-translation hidden">
+                    <!-- Complete verse translation from JS -->
+                </div>
+            </section>
+
+            <section class="translation-section">
+                <label for="urdu-input">Manual Translation</label>
+                <textarea id="urdu-input" placeholder="Type your translation here..."></textarea>
+            </section>
+
+            <nav class="controls">
+                <button id="prev-btn" class="nav-btn secondary">Previous</button>
+                <div class="main-actions">
+                    <button id="next-btn" class="nav-btn primary">Next Verse</button>
+                    <button id="last-seen-btn" class="nav-btn accent">Mark Last Seen</button>
+                </div>
+            </nav>
+        </main>
+    </div>
+
+    <div id="study-list-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>My Study List</h3>
+                <button id="close-study-list" class="close-btn">&times;</button>
+            </div>
+            <div id="study-list-container" class="study-list-content">
+                <!-- Words added via JS -->
+                <p class="empty-msg">Double-click any word to add it here!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden">Word Added! 📚</div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
